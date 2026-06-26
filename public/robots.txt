@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mnamoto.com.au/sitemap.xml
