@@ -1,82 +1,101 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-const categories = [
-  {
-    title: "Helmets & Goggles",
-    desc: "Thor, Fox, 100%, Progrip and more. Certified helmets for every rider.",
-    href: "/parts/helmets",
-    image: "/images/gear/helmets-goggles.jpg",
-    alt: "Display shelf showing Thor and Fox helmets with 100% goggles",
-  },
-  {
-    title: "Riding Gear",
-    desc: "Fox Racing boots, jerseys and full kit. Gear up right.",
-    href: "/parts/gear",
-    image: "/images/gear/riding-gear-wall.jpg",
-    alt: "Full wall display of Fox Racing riding boots and helmets",
-  },
-  {
-    title: "MX Apparel",
-    desc: "Thor, RHK and more. Full range of MX and casual riding apparel.",
-    href: "/parts/apparel",
-    image: "/images/gear/thor-jerseys.jpg",
-    alt: "Thor MX jersey rack in the MNA Moto store",
-  },
-];
 
 export default function GearSection() {
   return (
-    <section className="py-24 bg-[#f5f5f3]" aria-label="Riding gear and accessories">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
+    <section className="bg-white py-24">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
+
         <div className="flex items-end justify-between mb-12">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#e85d26] block mb-3">
-              Parts &amp; Accessories
-            </span>
-            <h2 className="font-[family-name:var(--font-display)] text-[clamp(32px,4vw,52px)] font-bold tracking-[-0.03em] leading-none text-[#1a1a1a]">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-6 h-[2px] bg-[#cc1f1f]" />
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-black/40">Parts &amp; Accessories</span>
+            </div>
+            <h2 className="font-[family-name:var(--font-display)] text-[clamp(28px,4vw,44px)] font-bold tracking-[-0.03em] text-black leading-none">
               Gear Up.
             </h2>
-            <p className="text-[17px] text-[#888] mt-3 max-w-[400px] leading-relaxed">
-              A fully stocked store with the brands serious riders trust.
-            </p>
           </div>
-          <Link
-            href="/parts"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a1a1a] hover:bg-[#333] text-white text-[13.5px] font-semibold rounded-lg transition-all flex-shrink-0"
-          >
-            Shop All Gear <ArrowRight size={15} />
+          <Link href="/parts" className="text-[13px] font-semibold text-black/40 hover:text-black transition-colors">
+            Shop all →
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {categories.map((cat) => (
+        {/* Two column layout — wide left image + right stack */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+          {/* Left — tall hero image */}
+          <Link
+            href="/parts/gear"
+            className="group relative rounded-2xl overflow-hidden h-[480px] lg:h-auto"
+            aria-label="Riding Gear"
+          >
+            <Image
+              src="/images/gear/riding-gear-wall.jpg"
+              alt="Full wall display of Fox Racing boots and helmets at MNA Moto"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-7">
+              <h3 className="text-white font-[family-name:var(--font-display)] text-[24px] font-bold tracking-tight mb-1">
+                Riding Gear
+              </h3>
+              <p className="text-white/55 text-[13px] mb-4">Fox · Thor · RHK · 100%</p>
+              <span className="inline-flex items-center gap-2 text-white text-[13px] font-semibold group-hover:gap-4 transition-all">
+                Shop Gear
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </Link>
+
+          {/* Right — two stacked */}
+          <div className="grid grid-rows-2 gap-4">
             <Link
-              key={cat.href}
-              href={cat.href}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/5] block"
-              aria-label={cat.title}
+              href="/parts/helmets"
+              className="group relative rounded-2xl overflow-hidden"
+              aria-label="Helmets & Goggles"
             >
               <Image
-                src={cat.image}
-                alt={cat.alt}
+                src="/images/gear/helmets-goggles.jpg"
+                alt="Thor and Fox helmets with 100% goggles at MNA Moto"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-white font-[family-name:var(--font-display)] text-[20px] font-bold tracking-tight mb-2">
-                  {cat.title}
+                <h3 className="text-white font-[family-name:var(--font-display)] text-[20px] font-bold tracking-tight mb-0.5">
+                  Helmets &amp; Goggles
                 </h3>
-                <p className="text-white/55 text-[13px] leading-relaxed mb-4">{cat.desc}</p>
-                <span className="inline-flex items-center gap-1.5 text-[#e85d26] text-[13px] font-semibold group-hover:gap-3 transition-all">
-                  Shop Now <ArrowRight size={13} />
-                </span>
+                <p className="text-white/50 text-[12px]">Full certified range in store</p>
               </div>
             </Link>
-          ))}
+
+            <Link
+              href="/parts/apparel"
+              className="group relative rounded-2xl overflow-hidden"
+              aria-label="MX Apparel"
+            >
+              <Image
+                src="/images/gear/thor-jerseys.jpg"
+                alt="Thor MX jerseys and RHK parts at MNA Moto"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 1024px) 100vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-white font-[family-name:var(--font-display)] text-[20px] font-bold tracking-tight mb-0.5">
+                  MX Apparel
+                </h3>
+                <p className="text-white/50 text-[12px]">Thor · Fox · RHK jerseys &amp; pants</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

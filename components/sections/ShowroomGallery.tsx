@@ -1,129 +1,99 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const panels = [
   {
-    image: "/images/showroom/showroom-floor.jpg",
-    alt: "MNA Moto showroom with CFMOTO UTVs and GASGAS dirt bikes on display",
-    label: "Motorcycle & ATV Showroom",
-    href: "/motorcycles",
-    wide: true,
-  },
-  {
-    image: "/images/showroom/parts-wall.jpg",
-    alt: "RHK parts wall with a large range of accessories and bikes in the background",
-    label: "Parts & Accessories",
-    href: "/parts",
+    image: "/images/bikes/ycf-125se-mx.jpg",
+    alt: "YCF 125SE MX pit bike on green paddock",
+    label: "New Motorcycles",
+    sub: "KTM · Husqvarna · GASGAS · YCF · Sunday",
+    href: "/motorcycles/new",
+    span: "md:col-span-2 md:row-span-2",
   },
   {
     image: "/images/gear/riding-gear-wall.jpg",
-    alt: "Full wall display of Fox Racing boots, helmets and riding gear",
+    alt: "Fox Racing boots and helmets display wall",
     label: "Riding Gear",
+    sub: "Fox · Thor · 100% · RHK",
     href: "/parts",
+    span: "",
   },
   {
-    image: "/images/gear/thor-jerseys.jpg",
-    alt: "Thor MX jerseys rack with RHK and Motorex products visible",
-    label: "MX Apparel",
+    image: "/images/gear/helmets-goggles.jpg",
+    alt: "Helmet and goggle display",
+    label: "Helmets & Goggles",
+    sub: "Full range in store",
     href: "/parts",
+    span: "",
   },
   {
     image: "/images/showroom/power-equipment.jpg",
-    alt: "MNA Moto indoor power equipment section with GASGAS balance bike and Greenworks mower",
+    alt: "Power equipment section with Greenworks and GASGAS",
     label: "Power Equipment",
+    sub: "Chainsaws · Mowers · Blowers",
     href: "/outdoor-power",
+    span: "",
+  },
+  {
+    image: "/images/gear/thor-jerseys.jpg",
+    alt: "Thor MX jersey rack",
+    label: "MX Apparel",
+    sub: "Thor · Fox · RHK",
+    href: "/parts",
+    span: "",
   },
 ];
 
 export default function ShowroomGallery() {
   return (
-    <section className="py-24 bg-[#0a0a0a]" aria-label="Showroom gallery">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
-        <div className="mb-12">
-          <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#e85d26] block mb-3">
-            Visit In-Store
-          </span>
-          <h2 className="font-[family-name:var(--font-display)] text-[clamp(32px,4vw,52px)] font-bold tracking-[-0.03em] leading-none text-white mb-4">
-            One Store.<br />Everything You Need.
-          </h2>
-          <p className="text-[17px] text-white/45 max-w-[480px] leading-relaxed">
-            From KTM enduro bikes to CFMOTO ATVs, Thor jerseys to chainsaw parts — it&apos;s all here under one roof in Victoria.
-          </p>
+    <section className="bg-[#0d0d0d] py-24">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
+
+        {/* Section header */}
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-6 h-[2px] bg-[#cc1f1f]" />
+              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-white/40">In Store</span>
+            </div>
+            <h2 className="font-[family-name:var(--font-display)] text-[clamp(28px,4vw,44px)] font-bold tracking-[-0.03em] text-white leading-none">
+              Everything You Need.
+            </h2>
+          </div>
+          <Link href="/contact" className="hidden sm:inline-flex text-[13px] font-semibold text-white/40 hover:text-white transition-colors">
+            Visit In-Store →
+          </Link>
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[220px]">
-          {/* Large panel */}
-          <Link
-            href={panels[0].href}
-            className="col-span-2 row-span-2 group relative rounded-xl overflow-hidden"
-            aria-label={panels[0].label}
-          >
-            <Image
-              src={panels[0].image}
-              alt={panels[0].alt}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-              <span className="text-white font-bold font-[family-name:var(--font-display)] text-[18px]">{panels[0].label}</span>
-              <div className="w-9 h-9 rounded-full bg-[#e85d26] flex items-center justify-center text-white">
-                <ArrowRight size={16} />
-              </div>
-            </div>
-          </Link>
-
-          {/* Small panels */}
-          {panels.slice(1).map((panel) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 auto-rows-[200px]">
+          {panels.map((p) => (
             <Link
-              key={panel.href + panel.label}
-              href={panel.href}
-              className="group relative rounded-xl overflow-hidden"
-              aria-label={panel.label}
+              key={p.href + p.label}
+              href={p.href}
+              className={`group relative overflow-hidden rounded-xl ${p.span}`}
+              aria-label={p.label}
             >
               <Image
-                src={panel.image}
-                alt={panel.alt}
+                src={p.image}
+                alt={p.alt}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/75 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-white font-semibold text-[13px] font-[family-name:var(--font-display)]">{panel.label}</span>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Red accent bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#cc1f1f] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              {/* Text */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="text-white font-[family-name:var(--font-display)] font-bold text-[16px] tracking-tight leading-snug">
+                  {p.label}
+                </div>
+                <div className="text-white/50 text-[11px] font-medium mt-0.5">{p.sub}</div>
               </div>
             </Link>
           ))}
-        </div>
-
-        {/* Storefront */}
-        <div className="mt-3 relative rounded-xl overflow-hidden h-[240px]">
-          <Image
-            src="/images/store/storefront.jpg"
-            alt="MNA Moto storefront with red signage showing Chainsaws, Motorcycles, Lawnmowers and Brushcutters"
-            fill
-            className="object-cover object-center"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/70 via-[#0a0a0a]/30 to-transparent" />
-          <div className="absolute inset-0 flex items-center p-8 md:p-12">
-            <div>
-              <p className="text-white/60 text-[12px] font-semibold tracking-[0.08em] uppercase mb-2">Find Us</p>
-              <h3 className="text-white font-[family-name:var(--font-display)] text-[clamp(20px,3vw,32px)] font-bold tracking-tight mb-4">
-                MNA Moto — Main Street, Victoria
-              </h3>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#e85d26] hover:bg-[#c44d1e] text-white font-semibold text-[13.5px] rounded-lg transition-all"
-              >
-                Get Directions <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </section>
