@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&display=swap');
 
 :root {
   --font-display: "Bebas Neue", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --red: #cc1f1f;
-  --red-dark: #a81818;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -19,37 +17,8 @@ body {
   background: #fff;
   color: #111;
 }
-
 ::selection { background: #cc1f1f; color: white; }
-::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #cc1f1f; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #cc1f1f; }
 :focus-visible { outline: 2px solid #cc1f1f; outline-offset: 2px; }
-
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%; height: 3px;
-  background: #e2e2e2; border-radius: 2px;
-  outline: none; cursor: pointer;
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 18px; height: 18px; border-radius: 50%;
-  background: #cc1f1f; border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(204,31,31,0.4); cursor: pointer;
-}
-
-@keyframes brandScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
