@@ -17,29 +17,43 @@ function BikeCard({ bike, delay }: { bike: typeof bikes[0]; delay: number }) {
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { el.style.opacity = "1"; el.style.transform = "translateY(0)"; obs.disconnect(); }
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
   return (
     <div ref={ref} style={{ opacity: 0, transform: "translateY(28px)", transition: `all 0.6s cubic-bezier(0.4,0,0.2,1) ${delay}ms` }}>
-      <Link href={bike.href} className="group block bg-white rounded-2xl overflow-hidden border border-black/[0.07] hover:border-black/[0.12] hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all duration-400 hover:-translate-y-1.5">
-        <div className="relative overflow-hidden bg-gray-100" style={{ height: 230 }}>
-          <span className="absolute top-4 left-4 z-10 px-3 py-1 bg-[#CC1F1F] text-white text-[10px] font-bold tracking-widest uppercase rounded-lg">New</span>
-          <Image src={bike.image} alt={bike.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
+      <Link
+        href={bike.href}
+        className="group block bg-white rounded-2xl overflow-hidden border border-black/[0.07] hover:border-black/[0.12] hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] transition-all duration-400 hover:-translate-y-1 touch-manipulation"
+      >
+        {/* Image */}
+        <div className="relative overflow-hidden bg-gray-100" style={{ height: 200 }}>
+          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-[#CC1F1F] text-white text-[9px] font-bold tracking-widest uppercase rounded-lg">
+            New
+          </span>
+          <Image
+            src={bike.image}
+            alt={bike.alt}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
-        <div className="p-6">
-          <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#CC1F1F] mb-1.5">{bike.brand}</p>
-          <h3 className="font-[family-name:var(--font-display)] text-[24px] text-gray-900 tracking-wide leading-none mb-1.5">{bike.year} {bike.name}</h3>
-          <p className="text-[12px] text-gray-400 font-medium mb-5">{bike.spec}</p>
-          <div className="flex items-center justify-between pt-5 border-t border-gray-100">
+
+        {/* Info */}
+        <div className="p-4 sm:p-5">
+          <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#CC1F1F] mb-1">{bike.brand}</p>
+          <h3 className="font-[family-name:var(--font-display)] text-[20px] sm:text-[22px] text-gray-900 tracking-wide leading-none mb-1">{bike.year} {bike.name}</h3>
+          <p className="text-[11px] sm:text-[12px] text-gray-400 font-medium mb-4">{bike.spec}</p>
+          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
             <div>
-              <div className="font-[family-name:var(--font-display)] text-[28px] text-gray-900 tracking-wide">{bike.price}</div>
-              <div className="text-[10px] text-gray-400 font-semibold mt-0.5 uppercase tracking-wide">Ride Away</div>
+              <div className="font-[family-name:var(--font-display)] text-[24px] sm:text-[26px] text-gray-900 tracking-wide leading-none">{bike.price}</div>
+              <div className="text-[9px] text-gray-400 font-semibold mt-0.5 uppercase tracking-wide">Ride Away</div>
             </div>
-            <div className="w-10 h-10 rounded-full bg-gray-100 group-hover:bg-[#CC1F1F] flex items-center justify-center transition-all duration-300">
-              <ArrowRight size={16} className="text-gray-500 group-hover:text-white transition-colors" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gray-100 group-hover:bg-[#CC1F1F] flex items-center justify-center transition-all duration-300 flex-shrink-0">
+              <ArrowRight size={15} className="text-gray-500 group-hover:text-white transition-colors" />
             </div>
           </div>
         </div>
@@ -50,18 +64,26 @@ function BikeCard({ bike, delay }: { bike: typeof bikes[0]; delay: number }) {
 
 export default function FeaturedBikes() {
   return (
-    <section className="py-20">
-      <div className="max-w-[1320px] mx-auto px-5 lg:px-10">
-        <div className="flex items-end justify-between mb-12">
+    <section className="py-14 sm:py-20 overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
+
+        {/* Header */}
+        <div className="flex items-end justify-between mb-8 sm:mb-12 gap-4">
           <div>
             <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#CC1F1F] mb-2">In Stock Now</p>
-            <h2 className="font-[family-name:var(--font-display)] text-[clamp(40px,6vw,68px)] text-gray-900 leading-none tracking-wide">FEATURED RIDES</h2>
+            <h2 className="font-[family-name:var(--font-display)] leading-none tracking-wide text-gray-900"
+              style={{ fontSize: "clamp(36px, 6vw, 64px)" }}>
+              FEATURED RIDES
+            </h2>
           </div>
-          <Link href="/motorcycles" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 hover:border-[#CC1F1F] hover:text-[#CC1F1F] text-gray-600 font-semibold text-[13px] rounded-xl transition-all shadow-sm">
-            View All <ArrowRight size={14} />
+          <Link href="/motorcycles"
+            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-gray-200 hover:border-[#CC1F1F] hover:text-[#CC1F1F] text-gray-600 font-semibold text-[12px] sm:text-[13px] rounded-xl transition-all shadow-sm min-h-[44px]">
+            View All <ArrowRight size={13} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        {/* Cards — 1 col mobile, 3 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {bikes.map((bike, i) => <BikeCard key={bike.name} bike={bike} delay={i * 100} />)}
         </div>
       </div>
