@@ -6,53 +6,49 @@ export default function Footer() {
     <footer className="bg-gray-900 text-white">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-12 sm:pt-14 pb-8">
 
-        {/* Top grid — stacks on mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="bg-white rounded-xl p-2.5 inline-block mb-4">
-              <Image src="/images/mnalogo.jpg" alt="MNA Moto Supplies" width={120} height={44} className="h-8 w-auto object-contain" />
+              <Image src="/images/mnalogo.jpg" alt="MNA Moto Supplies" width={110} height={40}
+                className="h-8 w-auto object-contain" />
             </div>
-            <p className="text-[13px] text-gray-400 leading-relaxed mb-4 max-w-[260px]">
+            <p className="text-[13px] text-gray-400 leading-relaxed mb-4 max-w-[240px]">
               Victoria&apos;s trusted motorcycle and power equipment dealer.
             </p>
             <div className="space-y-2 text-[12.5px] text-gray-400">
               <p>📍 Hamilton, Victoria</p>
               <a href="tel:07XXXXXXXX" className="block hover:text-white transition-colors">📞 07 XXXX XXXX</a>
-              <a href="mailto:info@mnamoto.com.au" className="block hover:text-white transition-colors">✉️ info@mnamoto.com.au</a>
+              <a href="mailto:info@mnamoto.com.au" className="block hover:text-white transition-colors break-all">✉️ info@mnamoto.com.au</a>
               <p>🕐 Mon–Fri 8:30–5:00 · Sat 8:30–4:00</p>
             </div>
           </div>
 
-          {/* Shop links */}
           <div>
             <div className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 mb-4">Shop</div>
             <ul className="space-y-2.5">
-              {[["New Bikes","/motorcycles/new"],["Used Bikes","/motorcycles/used"],["ATVs & UTVs","/motorcycles/atv"],["Parts & Gear","/parts"],["Power Equipment","/outdoor-power"]].map(([l,h]) => (
+              {[["New Bikes","/motorcycles/new"],["Used Bikes","/motorcycles/used"],["ATVs & UTVs","/motorcycles/atv"],["Parts & Gear","/parts"],["Power Equipment","/outdoor-power"]].map(([l,h])=>(
                 <li key={h}><Link href={h} className="text-[13px] text-gray-400 hover:text-white transition-colors">{l}</Link></li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
             <div className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-500 mb-4">Services</div>
             <ul className="space-y-2.5">
-              {[["Workshop","/workshop"],["Book a Service","/workshop/book"],["Finance","/finance"],["About","/about"],["Contact","/contact"]].map(([l,h]) => (
+              {[["Workshop","/workshop"],["Book a Service","/workshop/book"],["Finance","/finance"],["About","/about"],["Contact","/contact"]].map(([l,h])=>(
                 <li key={h}><Link href={h} className="text-[13px] text-gray-400 hover:text-white transition-colors">{l}</Link></li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-6 border-t border-gray-800">
           <span className="text-[11px] text-gray-600 text-center sm:text-left">
             © {new Date().getFullYear()} MNA Moto Supplies. All rights reserved.
           </span>
           <div className="flex gap-5">
-            {[["Privacy","/privacy"],["Terms","/terms"],["Warranty","/warranty"]].map(([l,h]) => (
+            {[["Privacy","/privacy"],["Terms","/terms"],["Warranty","/warranty"]].map(([l,h])=>(
               <Link key={h} href={h} className="text-[11px] text-gray-600 hover:text-gray-300 transition-colors">{l}</Link>
             ))}
           </div>
