@@ -6,24 +6,25 @@ export default function Newsletter() {
   const [done, setDone] = useState(false);
 
   return (
-    <section className="py-20 bg-[#CC1F1F] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
-      <div className="max-w-[700px] mx-auto px-6 text-center relative">
-        <h2 className="font-[family-name:var(--font-display)] text-[clamp(36px,6vw,64px)] text-white leading-none tracking-wide mb-3">
+    <section className="py-20 bg-[#CC1F1F]">
+      <div className="max-w-[560px] mx-auto px-5 text-center">
+        <h2 className="font-[family-name:var(--font-display)] text-[clamp(32px,5vw,52px)] text-white leading-none tracking-wide mb-2">
           STAY IN THE LOOP.
         </h2>
-        <p className="text-white/70 text-[15px] mb-10">New stock, exclusive deals and riding content — straight to your inbox.</p>
+        <p className="text-white/70 text-[14px] mb-8">New stock, deals and riding content — straight to your inbox.</p>
         {done ? (
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-white/15 rounded-xl text-white font-bold tracking-wide">
+          <div className="bg-white/15 rounded-xl py-4 px-6 text-white font-bold text-[14px] tracking-wide">
             ✓ You&apos;re subscribed!
           </div>
         ) : (
-          <form onSubmit={(e) => { e.preventDefault(); if (email) setDone(true); }} className="flex flex-col sm:flex-row gap-3">
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+          <form onSubmit={(e) => { e.preventDefault(); if (email) setDone(true); }} className="space-y-3">
+            <input
+              type="email" value={email} onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address" required aria-label="Email"
-              className="flex-1 h-14 px-5 bg-white/15 border-2 border-white/25 focus:border-white/70 rounded-xl text-white placeholder-white/45 text-[14px] outline-none transition-colors" />
+              className="w-full h-12 px-4 bg-white rounded-xl text-gray-900 placeholder-gray-400 text-[14px] outline-none border-2 border-transparent focus:border-white/50"
+            />
             <button type="submit"
-              className="h-14 px-8 bg-white text-[#CC1F1F] font-bold text-[13px] tracking-[0.1em] uppercase rounded-xl hover:bg-gray-100 transition-colors flex-shrink-0">
+              className="w-full h-12 bg-black hover:bg-gray-900 text-white font-bold text-[13px] tracking-[0.1em] uppercase rounded-xl transition-colors">
               Subscribe
             </button>
           </form>
