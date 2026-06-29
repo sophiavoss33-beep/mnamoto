@@ -64,7 +64,7 @@ export default function BookingForm() {
     );
   }
 
-  const inputClass = "w-full h-12 px-4 bg-[#f5f5f3] border-2 border-transparent focus:border-[#e85d26] focus:bg-white rounded-lg text-[14px] text-[#1a1a1a] outline-none transition-all placeholder-[#aaa]";
+  const inputClass = "w-full h-12 px-4 bg-[#f5f5f3] border-2 border-transparent focus:border-[#cc1f1f] focus:bg-white rounded-lg text-[14px] text-[#1a1a1a] outline-none transition-all placeholder-[#aaa]";
   const errorClass = "text-red-500 text-[12px] mt-1.5 font-medium";
   const labelClass = "block text-[12px] font-bold tracking-[0.04em] uppercase text-[#888] mb-2";
 
@@ -165,14 +165,14 @@ export default function BookingForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-14 bg-[#e85d26] hover:bg-[#c44d1e] disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-[16px] rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(232,93,38,0.4)]"
+        className="w-full h-14 bg-[#cc1f1f] hover:bg-[#a81818] disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-[16px] rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(204,31,31,0.4)]"
       >
         {isSubmitting ? "Submitting…" : "Submit Booking Request"}
       </button>
 
       <p className="text-[12px] text-[#aaa] text-center leading-relaxed">
         By submitting this form you agree to our{" "}
-        <a href="/privacy" className="text-[#e85d26] hover:underline">Privacy Policy</a>.
+        <a href="/privacy" className="text-[#cc1f1f] hover:underline">Privacy Policy</a>.
         Our workshop team will contact you within one business day to confirm your appointment.
       </p>
     </form>

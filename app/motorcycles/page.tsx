@@ -67,7 +67,7 @@ export default function Motorcycles() {
         <section className="pt-36 pb-16 bg-[#0a0a0a] relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
           <div className="max-w-[1400px] mx-auto px-6 lg:px-8 relative">
-            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#e85d26] block mb-4">MNA Moto</span>
+            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#cc1f1f] block mb-4">MNA Moto</span>
             <h1 className="font-[family-name:var(--font-display)] text-[clamp(48px,7vw,80px)] font-bold tracking-[-0.04em] leading-none text-white mb-4">
               Motorcycles
             </h1>
@@ -87,12 +87,12 @@ export default function Motorcycles() {
                   href={cat.href}
                   className="group p-6 bg-[#f5f5f3] rounded-xl hover:bg-[#1a1a1a] transition-all duration-300"
                 >
-                  <div className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#e85d26] mb-3">{cat.count}</div>
+                  <div className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#cc1f1f] mb-3">{cat.count}</div>
                   <h2 className="font-[family-name:var(--font-display)] text-[17px] font-bold text-[#1a1a1a] group-hover:text-white mb-2 tracking-tight transition-colors">
                     {cat.title}
                   </h2>
                   <p className="text-[13px] text-[#888] group-hover:text-white/50 leading-relaxed mb-4 transition-colors">{cat.desc}</p>
-                  <span className="text-[#e85d26] text-[13px] font-semibold flex items-center gap-1.5 group-hover:gap-3 transition-all">
+                  <span className="text-[#cc1f1f] text-[13px] font-semibold flex items-center gap-1.5 group-hover:gap-3 transition-all">
                     Browse <ArrowRight size={13} />
                   </span>
                 </Link>
@@ -113,13 +113,13 @@ export default function Motorcycles() {
               {featured.map((bike) => (
                 <Link key={bike.href} href={bike.href} className="group bg-white border border-[#e8e8e8] rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-[0_20px_56px_rgba(0,0,0,0.10)] hover:border-transparent transition-all">
                   <div className="relative h-[240px] bg-[#f5f5f3] overflow-hidden">
-                    <span className={`absolute top-4 left-4 z-10 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase ${bike.badge === "New" ? "bg-[#e85d26] text-white" : "bg-[#1a1a1a] text-white"}`}>
+                    <span className={`absolute top-4 left-4 z-10 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase ${bike.badge === "New" ? "bg-[#cc1f1f] text-white" : "bg-[#1a1a1a] text-white"}`}>
                       {bike.badge}
                     </span>
                     <Image src={bike.image} alt={bike.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 1200px) 50vw, 33vw" />
                   </div>
                   <div className="p-5">
-                    <div className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#e85d26] mb-1.5">{bike.brand}</div>
+                    <div className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#cc1f1f] mb-1.5">{bike.brand}</div>
                     <h3 className="font-[family-name:var(--font-display)] text-[18px] font-bold text-[#1a1a1a] mb-2 tracking-tight">{bike.year} {bike.name}</h3>
                     <div className="flex gap-2 mb-4 text-[12px] text-[#888]">
                       <span>{bike.cc}</span><span>·</span><span>{bike.type}</span>
@@ -129,7 +129,7 @@ export default function Motorcycles() {
                         <div className="font-[family-name:var(--font-display)] text-[22px] font-bold text-[#1a1a1a]">{bike.price}</div>
                         <div className="text-[10px] text-[#aaa] font-medium mt-0.5">Ride Away</div>
                       </div>
-                      <div className="w-9 h-9 rounded-full bg-[#f5f5f3] group-hover:bg-[#e85d26] flex items-center justify-center text-[#1a1a1a] group-hover:text-white transition-all">
+                      <div className="w-9 h-9 rounded-full bg-[#f5f5f3] group-hover:bg-[#cc1f1f] flex items-center justify-center text-[#1a1a1a] group-hover:text-white transition-all">
                         <ArrowRight size={15} />
                       </div>
                     </div>
@@ -140,7 +140,7 @@ export default function Motorcycles() {
 
             <div className="mt-10 text-center">
               <p className="text-[14px] text-[#888] mb-4">New stock arriving regularly. Contact us for the latest availability.</p>
-              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[#e85d26] hover:bg-[#c44d1e] text-white font-semibold text-[14px] rounded-lg transition-all">
+              <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[#cc1f1f] hover:bg-[#a81818] text-white font-semibold text-[14px] rounded-lg transition-all">
                 Enquire About Stock <ArrowRight size={14} />
               </Link>
             </div>

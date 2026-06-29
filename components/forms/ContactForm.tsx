@@ -50,7 +50,7 @@ export default function ContactForm() {
     );
   }
 
-  const inputClass = "w-full h-12 px-4 bg-[#f5f5f3] border-2 border-transparent focus:border-[#e85d26] focus:bg-white rounded-lg text-[14px] text-[#1a1a1a] outline-none transition-all placeholder-[#aaa]";
+  const inputClass = "w-full h-12 px-4 bg-[#f5f5f3] border-2 border-transparent focus:border-[#cc1f1f] focus:bg-white rounded-lg text-[14px] text-[#1a1a1a] outline-none transition-all placeholder-[#aaa]";
   const labelClass = "block text-[12px] font-bold tracking-[0.04em] uppercase text-[#888] mb-2";
   const errorClass = "text-red-500 text-[12px] mt-1.5 font-medium";
 
@@ -94,7 +94,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full h-13 py-4 bg-[#e85d26] hover:bg-[#c44d1e] disabled:opacity-60 text-white font-bold text-[15px] rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(232,93,38,0.4)]"
+        className="w-full h-13 py-4 bg-[#cc1f1f] hover:bg-[#a81818] disabled:opacity-60 text-white font-bold text-[15px] rounded-xl transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(204,31,31,0.4)]"
       >
         {isSubmitting ? "Sending…" : "Send Message"}
       </button>

@@ -17,7 +17,7 @@ export default function Finance() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Content */}
           <div>
-            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#e85d26] block mb-4">Ride Now, Pay Smart</span>
+            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#cc1f1f] block mb-4">Ride Now, Pay Smart</span>
             <h2 className="font-[family-name:var(--font-display)] text-[clamp(32px,4vw,52px)] font-bold tracking-[-0.03em] leading-tight text-[#1a1a1a] mb-5">
               Finance That<br />Works For You.
             </h2>
@@ -33,14 +33,14 @@ export default function Finance() {
                 "Finance for motorcycles, ATVs and power equipment",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3 text-[14px] text-[#444] font-medium">
-                  <span className="text-[#e85d26] text-[17px] mt-0.5 leading-none flex-shrink-0">✓</span>
+                  <span className="text-[#cc1f1f] text-[17px] mt-0.5 leading-none flex-shrink-0">✓</span>
                   {point}
                 </li>
               ))}
             </ul>
             <Link
               href="/finance"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#e85d26] hover:bg-[#c44d1e] text-white font-bold text-[14px] rounded-lg transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(232,93,38,0.4)]"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#cc1f1f] hover:bg-[#a81818] text-white font-bold text-[14px] rounded-lg transition-all hover:-translate-y-px hover:shadow-[0_12px_32px_rgba(204,31,31,0.4)]"
             >
               Explore Finance Options <ArrowRight size={15} />
             </Link>
@@ -100,7 +100,7 @@ export default function Finance() {
             <div className="bg-[#f5f5f3] rounded-xl p-6 mb-4">
               <div className="flex justify-between items-baseline mb-3 pb-3 border-b border-[#e8e8e8]">
                 <span className="text-[14px] text-[#888] font-medium">Estimated weekly</span>
-                <span className="font-[family-name:var(--font-display)] text-[28px] font-bold text-[#e85d26] tracking-tight">
+                <span className="font-[family-name:var(--font-display)] text-[28px] font-bold text-[#cc1f1f] tracking-tight">
                   ${Math.round(weekly)}
                 </span>
               </div>

@@ -15,7 +15,7 @@ export default function BookService() {
       <main className="pt-28 pb-24 bg-white min-h-screen">
         <div className="max-w-[900px] mx-auto px-6">
           <div className="mb-12">
-            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#e85d26] block mb-3">
+            <span className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#cc1f1f] block mb-3">
               MNA Moto Workshop
             </span>
             <h1 className="font-[family-name:var(--font-display)] text-[clamp(36px,5vw,64px)] font-bold tracking-[-0.03em] leading-none text-[#1a1a1a] mb-4">
