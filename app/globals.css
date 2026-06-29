@@ -10,15 +10,40 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  background: #fff;
   color: #111;
+  /* Mechanical grey backdrop */
+  background-color: #e8e8e6;
+  background-image:
+    /* Subtle grid lines */
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px),
+    /* Diagonal cross-hatch */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      rgba(0,0,0,0.015) 18px,
+      rgba(0,0,0,0.015) 19px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(0,0,0,0.015) 18px,
+      rgba(0,0,0,0.015) 19px
+    ),
+    /* Base gradient for depth */
+    linear-gradient(160deg, #ececea 0%, #e2e2e0 40%, #e8e8e6 100%);
+  background-size: 48px 48px, 48px 48px, auto, auto, 100% 100%;
 }
+
 ::selection { background: #CC1F1F; color: white; }
 ::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-track { background: #d8d8d6; }
 ::-webkit-scrollbar-thumb { background: #CC1F1F; }
 :focus-visible { outline: 2px solid #CC1F1F; outline-offset: 2px; }
