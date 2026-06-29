@@ -1,71 +1,78 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const panels = [
-  {
-    image: "/images/gear/thor-jerseys.jpg",
-    alt: "Thor MX jerseys",
-    eyebrow: "Thor · Fox · RHK · In Store",
-    title: "MX APPAREL",
-    sub: "Shop all things Moto",
-    cta: "SHOP NOW",
-    href: "/parts/apparel",
-  },
-  {
-    image: "/images/gear/helmets-goggles.jpg",
-    alt: "Helmets and goggles",
-    eyebrow: "Certified · Full Range",
-    title: "HELMETS &\nGOGGLES",
-    sub: "Protection you can trust",
-    cta: "SHOP NOW",
-    href: "/parts/helmets",
-  },
-  {
-    image: "/images/store/storefront.jpg",
-    alt: "MNA Moto storefront Hamilton",
-    eyebrow: "Hamilton · Victoria",
-    title: "VISIT US\nIN STORE.",
-    sub: "Mon–Fri 8:30–5:00 · Sat 8:30–4:00",
-    cta: "GET DIRECTIONS",
-    href: "/contact",
-  },
+const cats = [
+  { title: "Riding Gear", sub: "Fox · Thor · RHK · 100%", image: "/images/gear/riding-gear-wall.jpg", alt: "Fox Racing riding gear wall", href: "/parts/gear", tall: true },
+  { title: "Helmets & Goggles", sub: "Full certified range in store", image: "/images/gear/helmets-goggles.jpg", alt: "Helmets and goggles display", href: "/parts/helmets", tall: false },
+  { title: "MX Apparel", sub: "Thor · Fox · RHK jerseys & pants", image: "/images/gear/thor-jerseys.jpg", alt: "Thor MX jersey rack", href: "/parts/apparel", tall: false },
 ];
 
 export default function GearSection() {
   return (
-    <section className="bg-white">
-      {panels.map((panel) => (
-        <div key={panel.title} className="px-4 sm:px-6 py-3">
-          <div className="relative overflow-hidden" style={{ height: "85vh", minHeight: 520 }}>
-            <Image
-              src={panel.image}
-              alt={panel.alt}
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              style={{ opacity: 0.72 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/15 to-black/25" />
-            <div className="absolute right-5 top-8 hidden lg:block">
-              <span className="text-[8px] font-semibold tracking-[0.3em] uppercase text-white/30" style={{ writingMode: "vertical-rl" }}>
-                {panel.eyebrow}
+    <section className="py-24 bg-gray-50">
+      <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
+        <div className="flex items-end justify-between mb-14">
+          <div>
+            <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#CC1F1F] mb-3">Parts &amp; Accessories</p>
+            <h2 className="font-[family-name:var(--font-display)] text-[clamp(40px,6vw,72px)] text-gray-900 leading-none tracking-wide">
+              GEAR UP.
+            </h2>
+          </div>
+          <Link href="/parts"
+            className="hidden sm:inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 hover:border-[#CC1F1F] hover:text-[#CC1F1F] text-gray-600 font-semibold text-[13px] rounded-xl transition-all">
+            Shop All Gear <ArrowRight size={15} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {/* Tall left panel */}
+          <Link href={cats[0].href} className="group relative rounded-2xl overflow-hidden lg:row-span-2 block" style={{ minHeight: 400 }}>
+            <Image src={cats[0].image} alt={cats[0].alt} fill className="object-cover group-hover:scale-105 transition-transform duration-600" sizes="33vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute top-5 left-5 w-10 h-[2px] bg-[#CC1F1F]" />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <h3 className="font-[family-name:var(--font-display)] text-[28px] text-white tracking-wide mb-1">{cats[0].title}</h3>
+              <p className="text-white/50 text-[12px] mb-4">{cats[0].sub}</p>
+              <span className="inline-flex items-center gap-2 text-[11px] font-bold text-white/70 uppercase tracking-widest group-hover:text-white group-hover:gap-4 transition-all">
+                Shop Now <ArrowRight size={12} />
               </span>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-white/40 mb-3">{panel.eyebrow}</p>
-              <h2 className="font-[family-name:var(--font-display)] text-white leading-none tracking-wider mb-2 whitespace-pre-line"
-                style={{ fontSize: "clamp(48px, 9vw, 130px)" }}>
-                {panel.title}
-              </h2>
-              <p className="text-[13px] text-white/50 mb-8 font-light">{panel.sub}</p>
-              <Link href={panel.href}
-                className="inline-block px-10 py-3 border border-white text-white font-bold text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
-                {panel.cta}
-              </Link>
-            </div>
-          </div>
+          </Link>
+
+          {/* Two stacked right panels */}
+          {cats.slice(1).map((cat) => (
+            <Link key={cat.href} href={cat.href} className="group relative rounded-2xl overflow-hidden block" style={{ height: 280 }}>
+              <Image src={cat.image} alt={cat.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-600" sizes="33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="font-[family-name:var(--font-display)] text-[22px] text-white tracking-wide mb-1">{cat.title}</h3>
+                <p className="text-white/50 text-[11px]">{cat.sub}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-      ))}
+
+        {/* Power Equipment row */}
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+          <Link href="/outdoor-power" className="group relative rounded-2xl overflow-hidden block" style={{ height: 240 }}>
+            <Image src="/images/showroom/power-equipment.jpg" alt="MNA Moto power equipment" fill className="object-cover group-hover:scale-105 transition-transform duration-600" sizes="50vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p className="text-[10px] font-bold tracking-widest uppercase text-[#CC1F1F] mb-1">Chainsaws · Mowers · Generators</p>
+              <h3 className="font-[family-name:var(--font-display)] text-[24px] text-white tracking-wide">Power Equipment</h3>
+            </div>
+          </Link>
+          <Link href="/contact" className="group relative rounded-2xl overflow-hidden block" style={{ height: 240 }}>
+            <Image src="/images/store/storefront.jpg" alt="MNA Moto storefront Hamilton" fill className="object-cover object-center group-hover:scale-105 transition-transform duration-600" sizes="50vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <p className="text-[10px] font-bold tracking-widest uppercase text-[#CC1F1F] mb-1">Hamilton · Victoria</p>
+              <h3 className="font-[family-name:var(--font-display)] text-[24px] text-white tracking-wide">Visit Us In Store</h3>
+            </div>
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }

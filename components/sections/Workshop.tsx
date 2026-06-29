@@ -1,71 +1,82 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const panels = [
-  {
-    image: "/images/showroom/parts-wall.jpg",
-    alt: "MNA Moto workshop",
-    eyebrow: "On-Site · Factory Trained",
-    title: "WORKSHOP",
-    sub: "Expert servicing. Zero shortcuts.",
-    cta: "EXPLORE HERE",
-    href: "/workshop",
-  },
-  {
-    image: "/images/showroom/power-equipment.jpg",
-    alt: "MNA Moto power equipment",
-    eyebrow: "Chainsaws · Mowers · Generators",
-    title: "POWER\nEQUIPMENT",
-    sub: "Everything for work and outdoors",
-    cta: "EXPLORE HERE",
-    href: "/outdoor-power",
-  },
-  {
-    image: "/images/bikes/sunday-x124se.jpg",
-    alt: "Finance options",
-    eyebrow: "Fast Approval · Flexible Terms",
-    title: "FINANCE",
-    sub: "Ride now. Pay smart.",
-    cta: "EXPLORE HERE",
-    href: "/finance",
-  },
+const services = [
+  "Logbook Servicing","Engine Rebuilds","Tyre Supply & Fitting",
+  "Suspension Setup","Electrical Diagnostics","Accessory Fitting",
 ];
 
 export default function Workshop() {
   return (
-    <section className="bg-white">
-      {panels.map((panel) => (
-        <div key={panel.title} className="px-4 sm:px-6 py-3">
-          <div className="relative overflow-hidden" style={{ height: "85vh", minHeight: 520 }}>
-            <Image
-              src={panel.image}
-              alt={panel.alt}
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              style={{ opacity: 0.7 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/15 to-black/25" />
-            <div className="absolute right-5 top-8 hidden lg:block">
-              <span className="text-[8px] font-semibold tracking-[0.3em] uppercase text-white/30" style={{ writingMode: "vertical-rl" }}>
-                {panel.eyebrow}
-              </span>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-              <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-white/40 mb-3">{panel.eyebrow}</p>
-              <h2 className="font-[family-name:var(--font-display)] text-white leading-none tracking-wider mb-2 whitespace-pre-line"
-                style={{ fontSize: "clamp(48px, 9vw, 130px)" }}>
-                {panel.title}
+    <>
+      {/* Workshop Section */}
+      <section className="py-24 bg-gray-900 overflow-hidden relative">
+        <div className="absolute inset-0">
+          <Image src="/images/showroom/parts-wall.jpg" alt="MNA Moto workshop" fill className="object-cover opacity-20" sizes="100vw" />
+        </div>
+        <div className="relative z-10 max-w-[1320px] mx-auto px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#CC1F1F] mb-4">On-Site Workshop</p>
+              <h2 className="font-[family-name:var(--font-display)] text-[clamp(44px,6vw,80px)] text-white leading-none tracking-wide mb-6">
+                EXPERT<br />SERVICING.<br /><span className="text-[#CC1F1F]">NO SHORTCUTS.</span>
               </h2>
-              <p className="text-[13px] text-white/50 mb-8 font-light">{panel.sub}</p>
-              <Link href={panel.href}
-                className="inline-block px-10 py-3 border border-white text-white font-bold text-[11px] tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-all">
-                {panel.cta}
-              </Link>
+              <p className="text-[16px] text-white/55 leading-relaxed mb-10 max-w-[400px]">
+                Factory-trained technicians and genuine parts. We service every brand we sell and we do it right the first time.
+              </p>
+              <div className="grid grid-cols-2 gap-3 mb-10">
+                {services.map((s) => (
+                  <div key={s} className="flex items-center gap-2.5 text-[13px] text-white/65 font-medium">
+                    <CheckCircle2 size={15} className="text-[#CC1F1F] flex-shrink-0" />
+                    {s}
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/workshop/book"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 bg-[#CC1F1F] hover:bg-[#A81818] text-white font-bold text-[13px] tracking-wide uppercase rounded-xl transition-all hover:shadow-[0_8px_30px_rgba(204,31,31,0.4)] hover:-translate-y-0.5">
+                  Book a Service <ArrowRight size={15} />
+                </Link>
+                <Link href="/workshop"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-[13px] tracking-wide uppercase rounded-xl border border-white/20 hover:border-white/40 transition-all">
+                  Learn More
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative hidden lg:block">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+                <Image src="/images/showroom/showroom-floor.jpg" alt="MNA Moto showroom" fill className="object-cover opacity-80" sizes="50vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+              </div>
+              <div className="absolute -bottom-5 -left-5 bg-[#CC1F1F] rounded-2xl p-6 shadow-[0_20px_60px_rgba(204,31,31,0.4)]">
+                <div className="font-[family-name:var(--font-display)] text-[52px] text-white leading-none tracking-wide">20+</div>
+                <div className="text-[11px] text-white/75 font-semibold uppercase tracking-widest mt-1">Years Servicing</div>
+              </div>
             </div>
           </div>
         </div>
-      ))}
-    </section>
+      </section>
+
+      {/* Brands strip */}
+      <section className="bg-white py-12 border-b border-gray-100 overflow-hidden">
+        <p className="text-center text-[10px] font-bold tracking-[0.25em] uppercase text-gray-400 mb-8">Authorised Dealer &amp; Stockist For</p>
+        <div className="relative">
+          <div className="flex gap-4 w-max" style={{ animation: "scroll 28s linear infinite" }}>
+            {[...["KTM","Husqvarna","GASGAS","CFMOTO","YCF","Sunday","Thor","Fox Racing","100%","RHK","Motorex","Oregon","Greenworks"],
+              ...["KTM","Husqvarna","GASGAS","CFMOTO","YCF","Sunday","Thor","Fox Racing","100%","RHK","Motorex","Oregon","Greenworks"]
+            ].map((b, i) => (
+              <div key={i} className="flex-shrink-0 h-10 px-7 bg-gray-50 rounded-full border border-gray-200 flex items-center font-[family-name:var(--font-display)] text-[14px] text-gray-600 whitespace-nowrap hover:border-[#CC1F1F] hover:text-[#CC1F1F] transition-colors cursor-default tracking-wider">
+                {b}
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+        </div>
+        <style>{`@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+      </section>
+    </>
   );
 }
